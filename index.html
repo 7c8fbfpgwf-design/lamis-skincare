@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lamis. skincare — Ma Routine Idéale</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gd: #1a3a1a;
+    --gm: #3d6b1e;
+    --gl: #8ab828;
+    --gy: #c8d84a;
+    --gp: #e8f0a0;
+    --g2: #f0f7d0;
+    --cream: #f7f7ee;
+    --dark: #111a0a;
+    --mid: #3a5a1a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26,58,26,0.96);
+    backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw; height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-style: italic; font-weight: 400;
+    color: var(--gy); letter-spacing: 2px;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 1px;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gy); }
+  .nav-cta {
+    background: var(--gl); color: var(--gd) !important;
+    padding: 8px 20px; border-radius: 100px;
+    font-weight: 500 !important;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--gd) 0%, #2a5a12 55%, #4a7a1a 100%);
+    display: flex; align-items: center; justify-content: center;
+    padding: 100px 5vw 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(138,184,40,0.15) 0%, transparent 70%);
+  }
+  .hero-ring {
+    position: absolute; right: 8vw; top: 50%;
+    transform: translateY(-50%);
+    width: min(400px, 42vw); height: min(400px, 42vw);
+    opacity: 0.12;
+  }
+  .hero-ring svg { width: 100%; height: 100%; }
+  .hero-content { max-width: 640px; position: relative; z-index: 2; }
+  .hero-eyebrow {
+    font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gy); margin-bottom: 1.4rem; font-weight: 500;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 1.05; font-weight: 300;
+    color: #fff; margin-bottom: 0.3rem;
+  }
+  .hero-title em {
+    font-style: italic; color: var(--gy);
+    font-weight: 400;
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--gp); margin-bottom: 2rem;
+    font-weight: 300; letter-spacing: 0.5px;
+  }
+  .hero-desc {
+    font-size: 0.95rem; line-height: 1.75;
+    color: rgba(255,255,255,0.7); margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gl); color: var(--gd);
+    padding: 14px 32px; border-radius: 100px;
+    font-weight: 500; font-size: 0.92rem;
+    text-decoration: none; letter-spacing: 0.5px;
+    transition: all 0.25s; border: none; cursor: pointer;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gy); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(138,184,40,0.35); }
+  .btn-outline {
+    border: 1.5px solid rgba(255,255,255,0.4);
+    color: #fff; padding: 14px 32px; border-radius: 100px;
+    font-size: 0.92rem; text-decoration: none; letter-spacing: 0.5px;
+    transition: all 0.25s; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gy); color: var(--gy); }
+  .hero-badges {
+    display: flex; gap: 1.5rem; margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+  .hero-badge {
+    display: flex; align-items: center; gap: 0.5rem;
+    color: rgba(255,255,255,0.6); font-size: 0.8rem;
+  }
+  .hero-badge span { color: var(--gl); font-size: 1rem; }
+
+  /* ── SOCIAL PROOF STRIP ── */
+  .strip {
+    background: var(--gm);
+    padding: 14px 5vw;
+    display: flex; justify-content: center; gap: 4rem;
+    flex-wrap: wrap;
+  }
+  .strip-item { text-align: center; color: #fff; }
+  .strip-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600; color: var(--gy);
+    display: block;
+  }
+  .strip-label { font-size: 0.72rem; letter-spacing: 1px; opacity: 0.75; text-transform: uppercase; }
+
+  /* ── SECTIONS ── */
+  section { padding: 80px 5vw; }
+  .section-eyebrow {
+    font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gl); margin-bottom: 0.8rem; font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300; line-height: 1.1;
+    color: var(--gd); margin-bottom: 1rem;
+  }
+  .section-title em { font-style: italic; color: var(--gm); }
+  .section-desc {
+    font-size: 0.95rem; line-height: 1.75; color: #4a5a3a;
+    max-width: 520px;
+  }
+
+  /* ── PRODUCTS ── */
+  .products-section { background: #fff; }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .product-card {
+    border: 1.5px solid #e0ebb0;
+    border-radius: 16px; overflow: hidden;
+    transition: all 0.3s; background: var(--cream);
+    position: relative;
+  }
+  .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(61,107,30,0.15); border-color: var(--gl); }
+  .product-card-header {
+    padding: 2rem 1.8rem 1.5rem;
+    position: relative;
+  }
+  .product-tag {
+    position: absolute; top: 1.2rem; right: 1.2rem;
+    background: var(--gy); color: var(--gd);
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; padding: 4px 10px; border-radius: 100px;
+  }
+  .product-emoji { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400; color: var(--gd);
+    margin-bottom: 0.4rem;
+  }
+  .product-name em { font-style: italic; color: var(--gm); }
+  .product-subtitle { font-size: 0.8rem; color: #6a8a4a; margin-bottom: 0.8rem; }
+  .product-includes {
+    padding: 0 1.8rem 1.5rem;
+    border-top: 1px solid #e0ebb0;
+  }
+  .product-includes h4 {
+    font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gl); margin: 1rem 0 0.8rem; font-weight: 500;
+  }
+  .product-includes li {
+    font-size: 0.83rem; color: #4a5a3a; margin-bottom: 0.4rem;
+    list-style: none; display: flex; align-items: flex-start; gap: 0.5rem;
+  }
+  .product-includes li::before { content: "✓"; color: var(--gl); font-weight: 700; flex-shrink: 0; }
+  .product-footer {
+    padding: 1.2rem 1.8rem;
+    background: var(--g2);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .product-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600; color: var(--gd);
+  }
+  .product-price span { font-size: 0.9rem; font-weight: 300; font-family: 'DM Sans', sans-serif; color: #6a8a4a; }
+  .product-btn {
+    background: var(--gd); color: #fff;
+    padding: 10px 20px; border-radius: 100px;
+    font-size: 0.82rem; font-weight: 500; cursor: pointer;
+    border: none; transition: all 0.2s; text-decoration: none;
+    display: inline-block;
+  }
+  .product-btn:hover { background: var(--gm); }
+  .product-card.featured { border-color: var(--gl); border-width: 2px; }
+  .product-card.featured .product-card-header { background: linear-gradient(135deg, var(--gd), var(--gm)); }
+  .product-card.featured .product-emoji,
+  .product-card.featured .product-name { color: #fff; }
+  .product-card.featured .product-name em { color: var(--gy); }
+  .product-card.featured .product-subtitle { color: var(--gp); }
+
+  /* ── HOW IT WORKS ── */
+  .how-section { background: var(--g2); }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem; margin-top: 3rem; position: relative;
+  }
+  .step {
+    text-align: center; padding: 0 1rem;
+    position: relative;
+  }
+  .step-num {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--gd); color: var(--gy);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.2rem;
+  }
+  .step h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 400; color: var(--gd);
+    margin-bottom: 0.5rem;
+  }
+  .step p { font-size: 0.85rem; color: #5a7a3a; line-height: 1.6; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { background: var(--gd); }
+  .testimonials-section .section-title { color: #fff; }
+  .testimonials-section .section-eyebrow { color: var(--gy); }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .testimonial {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(200,216,74,0.2);
+    border-radius: 16px; padding: 1.8rem;
+    transition: all 0.3s;
+  }
+  .testimonial:hover { background: rgba(255,255,255,0.1); border-color: rgba(200,216,74,0.4); }
+  .testimonial-stars { color: var(--gy); font-size: 0.9rem; margin-bottom: 0.8rem; letter-spacing: 2px; }
+  .testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-style: italic;
+    color: rgba(255,255,255,0.85); line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+  .testimonial-author { font-size: 0.78rem; color: var(--gy); font-weight: 500; letter-spacing: 1px; }
+  .testimonial-location { font-size: 0.72rem; color: rgba(255,255,255,0.4); }
+
+  /* ── PAYMENT ── */
+  .payment-section { background: #fff; }
+  .payment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem; margin-top: 2.5rem;
+  }
+  .payment-card {
+    border: 1.5px solid #e0ebb0; border-radius: 12px;
+    padding: 1.5rem; text-align: center; background: var(--cream);
+  }
+  .payment-icon { font-size: 2rem; margin-bottom: 0.8rem; display: block; }
+  .payment-name {
+    font-weight: 600; font-size: 0.9rem; color: var(--gd);
+    margin-bottom: 0.3rem;
+  }
+  .payment-desc { font-size: 0.78rem; color: #6a8a4a; line-height: 1.5; }
+
+  /* ── BUNDLE ── */
+  .bundle-section {
+    background: linear-gradient(160deg, var(--gd), #2a5a12);
+    text-align: center; padding: 80px 5vw;
+  }
+  .bundle-section .section-title,
+  .bundle-section .section-desc { color: #fff; }
+  .bundle-section .section-desc { margin: 0 auto; color: var(--gp); }
+  .bundle-box {
+    background: rgba(255,255,255,0.08);
+    border: 1.5px solid rgba(200,216,74,0.3);
+    border-radius: 20px; padding: 2.5rem;
+    max-width: 620px; margin: 2.5rem auto;
+    backdrop-filter: blur(10px);
+  }
+  .bundle-items {
+    list-style: none; text-align: left;
+    margin-bottom: 2rem;
+  }
+  .bundle-items li {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.9rem; color: rgba(255,255,255,0.85);
+  }
+  .bundle-items li:last-child { border-bottom: none; }
+  .bundle-items .item-emoji { font-size: 1.3rem; }
+  .bundle-items .item-price {
+    margin-left: auto; font-size: 0.8rem;
+    color: rgba(255,255,255,0.4); text-decoration: line-through;
+  }
+  .bundle-total {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 1.5rem; border-top: 1.5px solid rgba(200,216,74,0.3);
+  }
+  .bundle-label { color: var(--gp); font-size: 0.85rem; font-weight: 500; }
+  .bundle-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 600; color: var(--gy);
+  }
+  .bundle-save {
+    background: var(--gy); color: var(--gd);
+    font-size: 0.72rem; font-weight: 700; padding: 3px 10px;
+    border-radius: 100px; text-transform: uppercase; letter-spacing: 1px;
+    margin-left: 0.8rem;
+  }
+
+  /* ── FAQ ── */
+  .faq-section { background: var(--cream); }
+  .faq-list { max-width: 680px; margin: 2.5rem auto 0; }
+  .faq-item {
+    border-bottom: 1px solid #d8e8a0;
+    padding: 1.3rem 0;
+  }
+  .faq-q {
+    font-weight: 500; font-size: 0.95rem; color: var(--gd);
+    cursor: pointer; display: flex; justify-content: space-between;
+    align-items: center; gap: 1rem; user-select: none;
+  }
+  .faq-q::after {
+    content: "+"; color: var(--gl); font-size: 1.3rem;
+    font-weight: 300; flex-shrink: 0; transition: transform 0.2s;
+  }
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+  .faq-a {
+    font-size: 0.88rem; color: #5a7a3a; line-height: 1.75;
+    margin-top: 0.8rem; display: none;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ── CONTACT / ORDER ── */
+  .order-section { background: var(--g2); text-align: center; }
+  .order-box {
+    background: #fff; border-radius: 20px;
+    padding: 2.5rem; max-width: 500px; margin: 2.5rem auto 0;
+    border: 1.5px solid #d8e8a0;
+    box-shadow: 0 8px 40px rgba(61,107,30,0.08);
+  }
+  .order-steps {
+    text-align: left; list-style: none; margin: 1.5rem 0;
+  }
+  .order-steps li {
+    display: flex; align-items: flex-start; gap: 0.9rem;
+    padding: 0.6rem 0; font-size: 0.88rem; color: #4a5a3a;
+  }
+  .order-steps .step-dot {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--gd); color: var(--gy);
+    font-size: 0.7rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .wa-btn {
+    display: flex; align-items: center; justify-content: center; gap: 0.7rem;
+    background: #25D366; color: #fff;
+    padding: 14px 28px; border-radius: 100px;
+    font-weight: 500; font-size: 0.92rem; text-decoration: none;
+    transition: all 0.25s; width: 100%; margin-top: 0.5rem;
+  }
+  .wa-btn:hover { background: #1da851; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.3); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--gd); padding: 40px 5vw;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-style: italic;
+    color: var(--gy); letter-spacing: 3px; margin-bottom: 0.8rem;
+  }
+  .footer-tagline { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+  .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.5); text-decoration: none; }
+  .footer-links a:hover { color: var(--gy); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+  .hero-content > * { animation: fadeUp 0.7s ease both; }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero-title   { animation-delay: 0.2s; }
+  .hero-subtitle{ animation-delay: 0.3s; }
+  .hero-desc    { animation-delay: 0.4s; }
+  .hero-btns    { animation-delay: 0.5s; }
+  .hero-badges  { animation-delay: 0.6s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    nav { padding: 0 4vw; }
+    .nav-links { display: none; }
+    section { padding: 60px 5vw; }
+    .hero { padding: 90px 5vw 50px; }
+    .hero-ring { display: none; }
+    .strip { gap: 2rem; }
+    .bundle-total { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Lamis. skincare</div>
+  <ul class="nav-links">
+    <li><a href="#produits">Produits</a></li>
+    <li><a href="#comment">Comment ça marche</a></li>
+    <li><a href="#avis">Avis</a></li>
+    <li><a href="#commander" class="nav-cta">Commander</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ring">
+    <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M80 320 Q20 200 80 80 Q200 16 320 80" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M320 80 Q385 160 360 280" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <circle cx="325" cy="78" r="8" fill="white"/>
+      <circle cx="355" cy="140" r="6" fill="white"/>
+      <circle cx="360" cy="200" r="4" fill="white"/>
+      <path d="M185 130 L200 100 L215 130 L185 130Z" fill="white" opacity="0.8"/>
+      <line x1="200" y1="100" x2="200" y2="72" stroke="white" stroke-width="2" opacity="0.8"/>
+      <line x1="172" y1="116" x2="228" y2="116" stroke="white" stroke-width="2" opacity="0.8"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">✦ Lamis. skincare — Algérie ✦</p>
+    <h1 class="hero-title">Ta peau mérite<br><em>le meilleur soin</em></h1>
+    <p class="hero-subtitle">Guides digitaux · Routines · Recettes naturelles</p>
+    <p class="hero-desc">Des produits digitaux skincare créés pour la femme algérienne — accessibles, efficaces, et adaptés à notre climat et nos produits locaux.</p>
+    <div class="hero-btns">
+      <a href="#produits" class="btn-primary">Voir les produits</a>
+      <a href="#commander" class="btn-outline">Commander maintenant</a>
+    </div>
+    <div class="hero-badges">
+      <div class="hero-badge"><span>🌿</span> 100% naturel</div>
+      <div class="hero-badge"><span>🇩🇿</span> Adapté à l'Algérie</div>
+      <div class="hero-badge"><span>💳</span> Paiement Edahabia & CIB</div>
+      <div class="hero-badge"><span>📲</span> PDF livré sur WhatsApp</div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item"><span class="strip-num">500+</span><span class="strip-label">Clientes satisfaites</span></div>
+  <div class="strip-item"><span class="strip-num">4.9★</span><span class="strip-label">Note moyenne</span></div>
+  <div class="strip-item"><span class="strip-num">3</span><span class="strip-label">Guides disponibles</span></div>
+  <div class="strip-item"><span class="strip-num">100%</span><span class="strip-label">Produits DZ accessibles</span></div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="produits">
+  <p class="section-eyebrow">✦ Nos produits</p>
+  <h2 class="section-title">Choisis ton <em>guide idéal</em></h2>
+  <p class="section-desc">Chaque guide est conçu pour être utilisé dès aujourd'hui, avec des produits disponibles partout en Algérie.</p>
+
+  <div class="products-grid">
+
+    <!-- Quiz -->
+    <div class="product-card">
+      <div class="product-card-header">
+        <div class="product-tag">Bestseller</div>
+        <span class="product-emoji">🌸</span>
+        <h3 class="product-name">Quiz Type de <em>Peau</em></h3>
+        <p class="product-subtitle">Découvre ton profil en 10 questions</p>
+      </div>
+      <div class="product-includes">
+        <h4>Ce que tu reçois</h4>
+        <ul>
+          <li>10 questions pour identifier ton type de peau</li>
+          <li>5 fiches résultats personnalisées</li>
+          <li>Ingrédients à privilégier & à éviter</li>
+          <li>Routine matin & soir adaptée</li>
+          <li>Produits disponibles en Algérie</li>
+        </ul>
+      </div>
+      <div class="product-footer">
+        <div class="product-price"> 500 DA <span>/ PDF</span></div>
+        <a href="#commander" class="product-btn">Commander</a>
+      </div>
+    </div>
+
+    <!-- Ebook Premium -->
+    <div class="product-card featured">
+      <div class="product-card-header">
+        <div class="product-tag" style="background:var(--gy);">Premium ✨</div>
+        <span class="product-emoji">📖</span>
+        <h3 class="product-name">Ma Routine <em>Idéale</em></h3>
+        <p class="product-subtitle">E-book complet 25+ pages · FR & عربي</p>
+      </div>
+      <div class="product-includes">
+        <h4>Ce que tu reçois</h4>
+        <ul>
+          <li>Guide complet 25+ pages</li>
+          <li>Routine matin & soir étape par étape</li>
+          <li>5 recettes soins naturels maison</li>
+          <li>Tableau produits DZ avec prix</li>
+          <li>Journal skincare 30 jours à remplir</li>
+          <li>Version française + version عربية</li>
+        </ul>
+      </div>
+      <div class="product-footer" style="background:rgba(138,184,40,0.12);">
+        <div class="product-price">2 500 DA <span>/ PDF</span></div>
+        <a href="#commander" class="product-btn" style="background:var(--gl);color:var(--gd);">Commander</a>
+      </div>
+    </div>
+
+    <!-- Programme 30 jours -->
+    <div class="product-card">
+      <div class="product-card-header">
+        <div class="product-tag" style="background:var(--gm);color:#fff;">Transformation</div>
+        <span class="product-emoji">📅</span>
+        <h3 class="product-name">Programme <em>30 Jours</em></h3>
+        <p class="product-subtitle">Un plan jour par jour pour transformer ta peau</p>
+      </div>
+      <div class="product-includes">
+        <h4>Ce que tu reçois</h4>
+        <ul>
+          <li>30 actions quotidiennes détaillées</li>
+          <li>4 semaines thématiques progressives</li>
+          <li>Tracker de progrès & bilan final</li>
+          <li>Masques et recettes hebdomadaires</li>
+          <li>Conseils nutrition & mode de vie</li>
+        </ul>
+      </div>
+      <div class="product-footer">
+        <div class="product-price">1 000 DA <span>/ PDF</span></div>
+        <a href="#commander" class="product-btn">Commander</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="comment">
+  <p class="section-eyebrow">✦ Simple & rapide</p>
+  <h2 class="section-title">Comment <em>commander</em> ?</h2>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Choisis ton guide</h3>
+      <p>Quiz, E-book premium ou Programme 30 jours — ou le pack complet pour économiser.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Envoie un DM</h3>
+      <p>Contacte-nous sur WhatsApp ou Instagram avec le nom du produit souhaité.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Paie en DZD</h3>
+      <p>Virement Edahabia ou CIB. Aucune carte internationale requise.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Reçois ton PDF</h3>
+      <p>Ton guide est envoyé sur WhatsApp dans les 2 heures suivant le paiement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="avis">
+  <p class="section-eyebrow">✦ Elles ont essayé</p>
+  <h2 class="section-title">Ce qu'elles <em>disent</em></h2>
+  <div class="testimonials-grid">
+    <div class="testimonial">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">« J'ai enfin compris mon type de peau ! Le quiz m'a appris que j'étais mixte et pas grasse. Ma routine a changé complètement. »</p>
+      <div class="testimonial-author">Amina B.</div>
+      <div class="testimonial-location">Alger</div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">« L'e-book en arabe est magnifique ! Les recettes naturelles avec des produits du herboriste c'est exactement ce dont j'avais besoin. »</p>
+      <div class="testimonial-author">Yasmine K.</div>
+      <div class="testimonial-location">Oran</div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">« Après 30 jours de programme ma peau est méconnaissable. Moins de boutons, plus d'éclat. J'aurais voulu commencer plus tôt ! »</p>
+      <div class="testimonial-author">Nadia M.</div>
+      <div class="testimonial-location">Constantine</div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT -->
+<section class="payment-section">
+  <p class="section-eyebrow">✦ Paiement 100% local</p>
+  <h2 class="section-title">Paye comme tu <em>veux</em></h2>
+  <p class="section-desc">Tous les paiements se font en dinars algériens. Aucune carte internationale, aucun PayPal.</p>
+  <div class="payment-grid">
+    <div class="payment-card">
+      <span class="payment-icon">💳</span>
+      <div class="payment-name">Carte Edahabia</div>
+      <p class="payment-desc">CCP Algérie Poste — la méthode la plus rapide et la plus utilisée.</p>
+    </div>
+    <div class="payment-card">
+      <span class="payment-icon">🏦</span>
+      <div class="payment-name">Carte CIB</div>
+      <p class="payment-desc">Virement bancaire interbancaire en toute sécurité.</p>
+    </div>
+    <div class="payment-card">
+      <span class="payment-icon">📱</span>
+      <div class="payment-name">BaridiMob</div>
+      <p class="payment-desc">Application Algérie Poste — transfert instantané depuis ton mobile.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BUNDLE -->
+<section class="bundle-section">
+  <p class="section-eyebrow" style="color:var(--gy);">✦ Meilleure valeur</p>
+  <h2 class="section-title" style="color:#fff;">Pack <em style="color:var(--gy);">Complet</em></h2>
+  <p class="section-desc">Tout ce dont tu as besoin pour transformer ta peau en un seul pack.</p>
+  <div class="bundle-box">
+    <ul class="bundle-items">
+      <li><span class="item-emoji">🌸</span> Quiz Type de Peau (PDF) <span class="item-price">1 000 DA</span></li>
+      <li><span class="item-emoji">📖</span> E-book Ma Routine Idéale FR + عربي <span class="item-price">2 500 DA</span></li>
+      <li><span class="item-emoji">📅</span> Programme Skincare 30 Jours <span class="item-price">1 500 DA</span></li>
+    </ul>
+    <div class="bundle-total">
+      <div>
+        <div class="bundle-label">Prix du pack</div>
+        <small style="color:rgba(255,255,255,0.3);font-size:0.75rem;">au lieu de 5 000 DA</small>
+      </div>
+      <div style="display:flex;align-items:center;">
+        <div class="bundle-price">3 500 DA</div>
+        <span class="bundle-save">-17%</span>
+      </div>
+    </div>
+  </div>
+  <a href="#commander" class="btn-primary" style="font-size:1rem;padding:16px 40px;">Je prends le Pack Complet</a>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <p class="section-eyebrow">✦ Questions fréquentes</p>
+  <h2 class="section-title" style="text-align:center;">On répond à <em>tout</em></h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">Comment je reçois mon PDF après le paiement ?</div>
+      <div class="faq-a">Dès que ton paiement est confirmé, ton guide PDF est envoyé directement sur ton WhatsApp dans un délai de 2 heures maximum. Tu peux le télécharger et le garder sur ton téléphone pour toujours.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Est-ce que les produits recommandés sont disponibles en Algérie ?</div>
+      <div class="faq-a">Oui ! Tous les produits mentionnés dans nos guides sont disponibles en pharmacie, supermarché, chez l'herboriste ou sur Jumia DZ. Nous indiquons même les prix approximatifs en DZD.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Pour quel type de peau ces guides conviennent-ils ?</div>
+      <div class="faq-a">Tous nos guides couvrent les 5 types de peau : normale, sèche, grasse, mixte et sensible. Le Quiz te permet d'identifier ton type exact et reçoit des recommandations personnalisées.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">L'e-book est disponible en arabe ?</div>
+      <div class="faq-a">Oui ! L'e-book "Ma Routine Idéale" est disponible en version française ET en version عربية complète. Les deux versions sont incluses dans le même achat.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Je peux payer avec une carte CIB normale ?</div>
+      <div class="faq-a">Absolument. On accepte Edahabia (CCP Algérie Poste), CIB (toutes banques algériennes) et BaridiMob. Aucune carte internationale nécessaire.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Est-ce qu'il y a une garantie de remboursement ?</div>
+      <div class="faq-a">Nos guides sont des produits digitaux (PDF), donc non remboursables après envoi. Mais nous sommes disponibles pour répondre à toutes tes questions et t'accompagner dans ta routine !</div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section class="order-section" id="commander">
+  <p class="section-eyebrow">✦ Passe ta commande</p>
+  <h2 class="section-title">Prête à <em>commencer</em> ?</h2>
+  <p class="section-desc" style="margin:0 auto;">Un seul message suffit. Dis-nous quel produit tu veux et on s'occupe du reste.</p>
+  <div class="order-box">
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gd);margin-bottom:1rem;">Comment commander :</h3>
+    <ol class="order-steps">
+      <li><div class="step-dot">1</div> Choisis ton produit dans la liste ci-dessus</li>
+      <li><div class="step-dot">2</div> Envoie-nous un message WhatsApp avec le nom du produit</li>
+      <li><div class="step-dot">3</div> On te donne notre numéro Edahabia / CIB</li>
+      <li><div class="step-dot">4</div> Tu paies et tu reçois ton PDF en moins de 2h</li>
+    </ol>
+    <a href="https://wa.me/213561700414?text=Bonjour%20Lamis.%20skincare%20!%20Je%20veux%20commander%20:" class="wa-btn" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Commander sur WhatsApp
+    </a>
+    <p style="font-size:0.75rem;color:#8aaa5a;margin-top:1rem;text-align:center;">Ou contacte-nous sur Instagram : <strong>@lamis.skincare</strong></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Lamis. skincare</div>
+  <p class="footer-tagline">Une peau belle commence par une routine constante ✦</p>
+  <div class="footer-links">
+    <a href="#produits">Produits</a>
+    <a href="#comment">Comment commander</a>
+    <a href="#avis">Avis clientes</a>
+    <a href="#commander">Contact</a>
+  </div>
+  <p style="font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:1.5rem;">© 2025 Lamis. skincare — Tous droits réservés</p>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.product-card, .step, .testimonial, .payment-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
